@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# raw data not in git
+data/raw/*
+# allow placeholder file if we add one later
+!data/raw/.gitkeep
+
+# processed artifacts
+data/processed/*.db
+
+# editor
+.vscode/
