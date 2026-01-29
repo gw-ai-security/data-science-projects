@@ -1,0 +1,26 @@
+﻿name: ci
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Run pipeline (if raw data exists)
+        run: |
+          if [ -f data/raw/Online_Retail.xlsx ]; then
+            python src/run_pipeline.py --skip-notebook --skip-html
+          else
+            echo "Raw dataset missing. Skipping pipeline step."
+          fi
+      - name: Tests
+        run: pytest -q

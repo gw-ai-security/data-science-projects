@@ -18,3 +18,14 @@ Der Rohdatensatz enthält negative Mengen (Retouren), Preise von 0 und fehlende 
 ### Consequences
 -   Der Datensatz `retail_clean.parquet` ist kleiner als raw (Zeilen-technisch), aber sauberer.
 -   Analysen, die Retouren untersuchen wollen, müssen auf `retail_raw.parquet` zurückgreifen.
+
+## 2026-01-29: KPI Report Generation
+
+### Context
+Recruiter-ready deliverable requires repeatable KPI calculation and visuals.
+
+### Decision
+- KPI report is generated via `src/kpi_analysis.py` to ensure a deterministic output and easy re-runs.
+
+### Consequences
+- Report and figures can be updated with a single command without notebook execution.

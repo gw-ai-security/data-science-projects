@@ -20,18 +20,18 @@ def convert_excel_to_parquet(force: bool = False) -> Path:
     parquet_path = out_dir / "retail_raw.parquet"
 
     if parquet_path.exists() and not force:
-        print(f"✅ Parquet already exists: {parquet_path}")
+        print(f"Parquet already exists: {parquet_path}")
         return parquet_path
 
     if not excel_path.exists():
         raise FileNotFoundError(f"Missing input file: {excel_path}. Run src/download_data.py first.")
 
-    print("⏳ Reading Excel (one-time slow step)...")
+    print("Reading Excel (one-time slow step)...")
     t0 = time.time()
 
     df = pd.read_excel(excel_path)
 
-    print(f"✅ Excel loaded: {len(df):,} rows in {time.time() - t0:.1f}s")
+    print(f"Excel loaded: {len(df):,} rows in {time.time() - t0:.1f}s")
 
     # ------------------------------------------------------------------
     # HARD FIX: Excel has mixed types (Description contains ints, etc.)
@@ -54,7 +54,7 @@ def convert_excel_to_parquet(force: bool = False) -> Path:
     if "Country" in df.columns:
         df["Country"] = df["Country"].fillna("").map(str)
 
-    print("⏳ Writing Parquet...")
+    print("Writing Parquet...")
     t1 = time.time()
 
     df.to_parquet(
@@ -63,8 +63,8 @@ def convert_excel_to_parquet(force: bool = False) -> Path:
         engine="pyarrow",
     )
 
-    print(f"✅ Parquet written in {time.time() - t1:.1f}s")
-    print(f"📍 Output: {parquet_path}")
+    print(f"Parquet written in {time.time() - t1:.1f}s")
+    print(f"Output: {parquet_path}")
     return parquet_path
 
 

@@ -1,15 +1,15 @@
-# Knowledge Base Index
+﻿# Knowledge Base Index
 
-Willkommen in der Knowledge Base des Projekts. Hier wird das Wissen zentralisiert.
+Willkommen in der Knowledge Base des Projekts.
 
-## 🏛 Architecture
-- `architecture.md`: Grundlegende Architekturentscheidungen.
+## Architecture
+- `architecture.md`: Data flow und zentrale Artefakte.
 
-## 🧠 Learnings & Patterns
+## Learnings & Patterns
 - `decisions.md`: Entscheidungsprotokolle (ADRs)
-- `patterns.md`: Wiederverwendbare Lösungswege
+- `patterns.md`: Wiederverwendbare Loesungswege
+- `learning_log_2026-01-29_kpi_analysis.md`: KPI Learnings
 
-## 📚 General
+## General
 - `glossary.md`: Definition wichtiger Begriffe
-
-*Diese Struktur wird vom Documentation und Learnings Agent gepflegt.*
+- `components.md`: Beschreibung zentraler Komponenten

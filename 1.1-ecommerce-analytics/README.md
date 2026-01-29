@@ -1,38 +1,54 @@
-# E-Commerce Analytics – Online Retail Dataset
+﻿# E-Commerce Analytics - Online Retail Dataset
 
-> **Purpose**: Dieses Repo nutzt ein strukturiertes Multi-Agenten-System für Entwicklung, Dokumentation und Wissensmanagement.
+> Purpose: End-to-end E-Commerce Analytics with EDA, data quality, KPI analysis and a recruiter-ready report.
 
-## 📂 Struktur & Navigation
+## Highlights
+- Cleaned transactional dataset with documented quality rules.
+- KPI report with revenue trends, top products, top countries and top customers.
+- Reproducible pipeline and notebooks.
 
-- **`.agent/`**: Gehirn des Systems. Enthält Skills (Prompts) und Rollendefinitionen.
-- **`docs/knowledge_base/`**: Langzeitgedächtnis. Architektur, Entscheidungen, Glossar.
-- **`docs/project_status/`**: Kurzzeitgedächtnis & Verlauf. Timestamped Snapshots für Handovers.
-- **`docs/skill-mapping.md`**: Kompetenz-Matrix dieses Projekts.
+## Results (from cleaned data)
+- Time window: 2010-12-01 to 2011-12-09
+- Total revenue: 10,642,110.80
+- Orders: 19,960
+- Customers: 4,338
+- Average order value: 533.17
 
-## 🤖 Workflow & Rollen
+See `reports/kpi_summary.md` and `reports/03_kpi_analysis.html` for charts and tables.
 
-Wir arbeiten nach dem **O-D-L Prinzip**:
-1.  **O**rchestrate: Der Orchestrator plant und verteilt Aufgaben.
-2.  **D**ocument: Bevor/Nachdem Code geschrieben wird, wird der Status festgehalten.
-3.  **L**earn: Erkenntnisse werden explizit extrahiert und gespeichert.
+## Data Source
+- Online Retail dataset (UCI Machine Learning Repository).
+- Raw file: `data/raw/Online_Retail.xlsx`.
 
-## 🛠 Quickstart für Agenten
+## Project Structure
+- `.agent/` - Skills and agent workflow instructions
+- `data/` - Raw and processed data
+- `notebooks/` - EDA, data quality, KPI analysis
+- `reports/` - KPI report, figures, and HTML notebook export
+- `src/` - Reusable scripts
+- `docs/` - Knowledge base and project status snapshots
 
-1.  **Lese Skills**: Prüfe `.agent/skills/` für deine spezifischen Instruktionen.
-2.  **Check Status**: Lese den neuesten Report in `docs/project_status/`.
-3.  **Update Status**: Erstelle VOR und NACH großen Änderungen einen Snapshot.
+## Quickstart
+1. Create venv: `python -m venv venv`
+2. Install deps: `pip install -r requirements.txt`
+3. Run pipeline (raw -> clean -> report + notebook + HTML):
+   `python src/run_pipeline.py`
+4. Open notebooks: `jupyter lab`
 
-## 📝 Conventions
+## Pipeline Commands
+- Convert raw Excel to parquet: `python src/convert_to_parquet.py`
+- Clean data: `python src/clean_data.py`
+- Generate KPI report only: `python src/kpi_analysis.py --input data/processed/retail_clean.parquet --outdir reports`
+- Full pipeline: `python src/run_pipeline.py --skip-notebook --skip-html`
 
--   **Timestamp**: `YYYY-MM-DD_HH-mm` (Europe/Vienna)
--   **Status Files**: Immer Markdown.
--   **Sprache**: Deutsch (DE).
+## Reproducibility
+- Minimal deps in `requirements.txt`.
+- Locked environment in `requirements-lock.txt`.
 
-## 🚀 Getting Started (Human)
+## Workflow (Agents)
+- Orchestrate -> Document -> Learn
+- Check `docs/project_status/` for the latest snapshot
 
-1.  Setup: `python -m venv venv`
-2.  Install: `pip install -r requirements.txt`
-3.  Notebooks: `jupyter notebook`
-
-## 📊 Project Status
-Siehe `docs/project_status/` für die neuesten Updates.
+## Notes
+- Language: German (DE) in documentation and notebooks.
+- Timestamp: `YYYY-MM-DD_HH-mm` (Europe/Vienna)
