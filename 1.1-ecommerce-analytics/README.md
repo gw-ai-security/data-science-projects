@@ -1,4 +1,4 @@
-﻿# E-Commerce Analytics - Online Retail Dataset
+# E-Commerce Analytics - Online Retail Dataset
 
 > Purpose: End-to-end E-Commerce Analytics with EDA, data quality, KPI analysis and a recruiter-ready report.
 
@@ -15,6 +15,19 @@
 - Average order value: 533.17
 
 See `reports/kpi_summary.md` and `reports/03_kpi_analysis.html` for charts and tables.
+
+## Business Problem
+- **Stakeholder:** Head of E-Commerce / Commercial Director responsible for revenue growth and inventory planning.
+- **Decision to support:** Where to focus merchandising, inventory, and account management efforts across products, countries, and customers.
+- **Why KPIs matter:** KPIs quantify revenue concentration, demand seasonality, and customer value so the business can allocate budget and stock based on evidence instead of intuition.
+
+## Key Insights & Decisions
+- **Revenue concentration risk:** The UK and a small set of customers drive most revenue, suggesting a dependency risk; prioritize diversification across countries and broader customer retention programs.
+- **Seasonality signal:** Monthly revenue shows end-of-year spikes; align inventory and staffing with peak demand periods.
+- **SKU focus:** A small group of products contributes a large share of revenue; keep these items consistently in stock and use them to anchor cross-sell bundles.
+
+## Next Logical Step
+- **Customer segmentation (RFM):** Build recency, frequency, and monetary segments to identify high-value and at-risk customers. This is the next step because it converts descriptive KPIs into actionable retention and targeting strategies without requiring new data sources.
 
 ## Data Source
 - Online Retail dataset (UCI Machine Learning Repository).
