@@ -367,7 +367,7 @@ def plot_rfm_scatter(rfm: pd.DataFrame, output_dir: Path) -> None:
             segment_data["Recency"],
             segment_data["Frequency"],
             segment_data["Monetary"],
-            c=segment_colors.get(segment, "#gray"),
+            c=segment_colors.get(segment, "gray"),
             label=segment,
             alpha=0.6,
             s=20,
@@ -496,7 +496,9 @@ def plot_rfm_heatmap(rfm: pd.DataFrame, output_dir: Path) -> None:
         columns="F_Score",
         aggfunc="count",
         fill_value=0
-    ).astype(float)  # Ensure numeric type for heatmap
+    )
+    # Convert to numeric type for seaborn heatmap compatibility
+    pivot = pivot.astype(float)
     
     fig, ax = plt.subplots(figsize=(10, 8))
     sns.heatmap(pivot, annot=True, fmt=".0f", cmap="YlOrRd", 

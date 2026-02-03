@@ -291,25 +291,7 @@ class TestAssignSegments:
         result = assign_segments(rfm_scored)
         assert result["Segment"].iloc[0] == "Growth Potential"
     
-    def test_assign_at_risk_segment(self):
-        """Test At Risk segment assignment."""
-        rfm_scored = pd.DataFrame({
-            "CustomerID": [1001],
-            "Recency": [150],
-            "Frequency": [8],
-            "Monetary": [3000],
-            "R_Score": [2],
-            "F_Score": [4],
-            "M_Score": [4],
-            "RFM_Score": ["244"],
-        })
-        
-        result = assign_segments(rfm_scored)
-        # With R=2, F=4, M=4, this doesn't match At Risk (R<=2, F>=3, M>=2)
-        # but also doesn't match Loyal (F>=4, M>=3, R>=2 - but R must be >= 2)
-        # With R=2, it matches Loyal criteria: F>=4, M>=3, R>=2
-        # Let's change to R=1 to ensure At Risk
-        
+    
     def test_assign_at_risk_segment_corrected(self):
         """Test At Risk segment assignment with correct criteria."""
         rfm_scored = pd.DataFrame({
@@ -423,8 +405,8 @@ class TestEdgeCases:
             "InvoiceNo", "InvoiceDate", "CustomerID", "Quantity", "UnitPrice"
         ])
         
-        # compute_rfm should handle empty data gracefully
-        with pytest.raises(Exception):  # May raise different errors depending on implementation
+        # compute_rfm should handle empty data, but groupby on empty will fail
+        with pytest.raises((ValueError, KeyError, AssertionError)):
             compute_rfm(empty_df)
     
     def test_single_transaction_single_customer(self):
