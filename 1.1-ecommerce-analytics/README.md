@@ -78,12 +78,15 @@ python src/rfm.py --data data/processed/retail_raw.parquet \
 reports/
   rfm_segmentation.parquet          # Full RFM scores + segments  
   rfm_report.md                     # Markdown summary
+  rfm_business_report.md            # Executive business report with ROI projections
   rfm_segments.csv                  # Customers + segments (for CRM import)
   figures/
     rfm_scatter_3d.png             # R vs F vs M visualization
     segment_distribution.png        # Segment counts
     segment_revenue.png             # Revenue by segment  
     segment_heatmap.png             # R/F heatmap
+    segment_clv_boxplot.png         # CLV distribution by segment (NEW)
+    marketing_action_matrix.png     # Marketing investment prioritization (NEW)
 ```
 
 ## 📊 Customer Segments
@@ -163,6 +166,15 @@ Apply business rules to assign customers to segments.
 - `plot_segment_distribution()`: Bar chart of segment sizes
 - `plot_segment_revenue()`: Revenue contribution by segment
 - `plot_rfm_heatmap()`: Heatmap of R vs F scores
+- `plot_segment_clv()`: **NEW** - Boxplot showing CLV distribution by segment
+- `plot_marketing_action_matrix()`: **NEW** - Heatmap of marketing investment recommendations
+
+#### 6. Business Reporting
+- `generate_business_report()`: **NEW** - Executive-level markdown report with:
+  - Revenue concentration analysis and business insights
+  - Recommended actions for next 90 days
+  - 12-month revenue impact projections with ROI estimates
+  - Technical implementation notes for reproducibility
 
 ### Data Flow
 ```
@@ -219,15 +231,22 @@ A: Lower recency (fewer days since purchase) is BETTER (more recent). We invert 
 ├── src/
 │   └── rfm.py                    # Main RFM implementation
 ├── tests/
-│   └── test_rfm.py              # Comprehensive test suite
+│   └── test_rfm.py              # Comprehensive test suite (25 tests)
 ├── data/
 │   └── processed/
 │       ├── retail_clean.parquet # Cleaned transaction data
 │       └── retail_raw.parquet   # Raw transaction data
 ├── reports/
-│   ├── rfm_report.md            # Generated summary
-│   ├── rfm_segments.csv         # Customer segments
-│   └── figures/                 # Visualizations
+│   ├── rfm_report.md            # Technical segment summary
+│   ├── rfm_business_report.md   # Executive business report (NEW)
+│   ├── rfm_segments.csv         # Customer segments for CRM
+│   └── figures/                 # All visualizations
+│       ├── rfm_scatter_3d.png
+│       ├── segment_distribution.png
+│       ├── segment_revenue.png
+│       ├── segment_heatmap.png
+│       ├── segment_clv_boxplot.png       # NEW
+│       └── marketing_action_matrix.png   # NEW
 └── README.md                    # This file
 ```
 
