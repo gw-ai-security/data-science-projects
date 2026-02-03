@@ -432,6 +432,6 @@ This is a production-ready implementation suitable for:
 
 ---
 
-**Author**: Professional Data Science Implementation  
+**Author**: Georg Wiesmüller
 **License**: MIT  
 **Status**: Production-Ready ✅
