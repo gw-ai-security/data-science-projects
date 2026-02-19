@@ -1,0 +1,9 @@
+customer_id,age,country,revenue
+1,25,AT,120
+2,31,DE,200
+3,22,AT,150
+4,45,CH,300
+5,29,DE,180
+6,,AT,210
+7,34,CH,
+8,28,DE,160
