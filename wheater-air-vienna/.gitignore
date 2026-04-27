@@ -1,0 +1,93 @@
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+
+# Python tooling caches / test artifacts
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+site/
+.eggs/
+*.egg-info/
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local shell/env helpers
+.direnv/
+.envrc
+
+# Logs / temp
+*.log
+tmp/
+temp/
+scratch/
+
+# ----------------------------------------------------
+# Project specific Big Data artifacts (Current Pipeline)
+# ----------------------------------------------------
+
+# Raw Data (Too large for Git)
+data/raw/**/*.json
+data/raw/**/*.parquet
+
+# Staged Data (Completely ignored, handled by MongoDB)
+data/staged/
+
+# Processed / Hadoop Data
+data/processed/hadoop_out/part-*
+
+# ----------------------------------------------------
+# Infrastructure Data
+# ----------------------------------------------------
+
+# Database / container / local runtime artifacts
+mongo-data/
+mongodb-data/
+influxdb-data/
+hadoop-data/
+hdfs-data/
+docker-data/
+volumes/
+*.pid
+
+# Big Data / Hadoop temp artifacts
+.hadoop/
+.spark/
+metastore_db/
+derby.log
+
+# Local tooling artifacts
+.agent-workbench/
+.cache/
+.claude/
